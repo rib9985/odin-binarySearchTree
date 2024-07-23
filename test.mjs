@@ -1,13 +1,5 @@
 import Tree from "./Tree.mjs";
 
-const testArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
-
-const tree = new Tree(testArray);
-
-console.log(tree.mapArray(testArray));
-
-console.log(tree);
-
 function prettyPrint(node, prefix = "", isLeft = true) {
   if (node === null) {
     return;
@@ -15,9 +7,19 @@ function prettyPrint(node, prefix = "", isLeft = true) {
   if (node.right !== null) {
     prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
   }
-  console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.middle}`);
+  console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.value}`);
   if (node.left !== null) {
     prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
   }
 }
-prettyPrint(tree.tree);
+
+// const testArrayOriginal = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+// const tree = new Tree(testArrayOriginal);
+// prettyPrint(tree.tree);
+
+const testArray = [1, 2, 3, 4, 6, 8, 9];
+const treeTwo = new Tree(testArray);
+prettyPrint(treeTwo.tree);
+treeTwo.insert(7);
+console.log(treeTwo);
+prettyPrint(treeTwo.tree);
