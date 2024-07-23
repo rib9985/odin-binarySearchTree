@@ -34,12 +34,24 @@ export default class Tree {
   }
 
   insert(value) {
-    //traverse tree until node is null (base case)
-    let valueToCheck = this.tree.middle;
-    if (valueToCheck == null || valueToCheck == value) {
-      valueToCheck = value;
-    } else if (valueToCheck > value) {
-      return;
+    const nodeToInsert = new Node(value);
+    let currentNode = this.tree;
+    let parentNode = null;
+    while (currentNode !== null) {
+      parentNode = currentNode;
+      if (value > currentNode.value) {
+        currentNode = currentNode.right;
+      } else if (value < currentNode.value) {
+        currentNode = currentNode.left;
+      } else if (value == currentNode.value) {
+        return;
+      }
+    }
+
+    if (value > parentNode.value) {
+      parentNode.right = nodeToInsert;
+    } else if (value < parentNode.value) {
+      parentNode.left = nodeToInsert;
     }
   }
 
