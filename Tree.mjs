@@ -55,5 +55,17 @@ export default class Tree {
     }
   }
 
-  deleteItem(value) {}
+  find(value) {
+    let currentNode = this.tree;
+    while (currentNode !== null) {
+      if (value == currentNode.value) {
+        return currentNode;
+      } else if (value > currentNode.value) {
+        currentNode = currentNode.right;
+      } else if (value < currentNode.value) {
+        currentNode = currentNode.left;
+      }
+    }
+    return null;
+  }
 }

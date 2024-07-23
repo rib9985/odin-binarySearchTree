@@ -19,7 +19,8 @@ function prettyPrint(node, prefix = "", isLeft = true) {
 
 const testArray = [1, 2, 3, 4, 6, 8, 9];
 const treeTwo = new Tree(testArray);
-prettyPrint(treeTwo.tree);
 treeTwo.insert(7);
-console.log(treeTwo);
 prettyPrint(treeTwo.tree);
+console.log(treeTwo.find(4));
+console.log(treeTwo.find(9));
+console.log(treeTwo.find(16));
