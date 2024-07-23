@@ -1,7 +1,21 @@
 import Node from "./Node.mjs";
 export default class Tree {
   constructor(array) {
-    this.tree = this.buildTree(array);
+    this.tree = this.buildTree(this.mapArray(array));
+  }
+
+  mapArray(array) {
+    if (array == null) {
+      return null;
+    } else {
+      return array
+        .sort(function (a, b) {
+          return a - b;
+        })
+        .filter((item, index) => {
+          return array.indexOf(item) === index;
+        });
+    }
   }
 
   buildTree(array) {
@@ -19,7 +33,15 @@ export default class Tree {
     return root;
   }
 
-  insert(value) {}
+  insert(value) {
+    //traverse tree until node is null (base case)
+    let valueToCheck = this.tree.middle;
+    if (valueToCheck == null || valueToCheck == value) {
+      valueToCheck = value;
+    } else if (valueToCheck > value) {
+      return;
+    }
+  }
 
   deleteItem(value) {}
 }
