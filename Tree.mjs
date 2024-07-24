@@ -139,4 +139,49 @@ export default class Tree {
 
     return levelOrderArray;
   }
+
+  inOrder(root) {
+    let array = [];
+
+    function inOrderRecursive(root) {
+      if (root == null) {
+        return;
+      }
+      inOrderRecursive(root.left);
+      array.push(root.value);
+      inOrderRecursive(root.right);
+    }
+    inOrderRecursive(root);
+    return array;
+  }
+
+  postOrder(root) {
+    let array = [];
+
+    function postOrderRecursive(root) {
+      if (root == null) {
+        return;
+      }
+      postOrderRecursive(root.left);
+      postOrderRecursive(root.right);
+      array.push(root.value);
+    }
+    postOrderRecursive(root);
+    return array;
+  }
+
+  preOrder(root) {
+    let array = [];
+
+    function preOrderRecursive(root) {
+      if (root == null) {
+        return;
+      }
+      array.push(root.value);
+      preOrderRecursive(root.left);
+      preOrderRecursive(root.right);
+    }
+    preOrderRecursive(root);
+    return array;
+  }
 }

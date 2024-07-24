@@ -21,3 +21,6 @@ const testArray = [1, 2, 3, 4, 6, 8, 9];
 const treeTwo = new Tree(testArray);
 prettyPrint(treeTwo.tree);
 console.log(treeTwo.levelOrder(treeTwo.tree));
+console.log(treeTwo.inOrder(treeTwo.tree));
+console.log(treeTwo.preOrder(treeTwo.tree));
+console.log(treeTwo.postOrder(treeTwo.tree));
