@@ -118,4 +118,25 @@ export default class Tree {
       return null;
     }
   }
+
+  levelOrder(root) {
+    if (root == null) {
+      throw new Error("Not a node");
+    }
+    const levelOrderArray = [];
+    const queue = [root];
+
+    while (queue.length > 0) {
+      let currentNode = queue.shift();
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+      levelOrderArray.push(currentNode.value);
+    }
+
+    return levelOrderArray;
+  }
 }

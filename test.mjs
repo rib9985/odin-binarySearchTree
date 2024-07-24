@@ -20,11 +20,4 @@ function prettyPrint(node, prefix = "", isLeft = true) {
 const testArray = [1, 2, 3, 4, 6, 8, 9];
 const treeTwo = new Tree(testArray);
 prettyPrint(treeTwo.tree);
-treeTwo.deleteItem(1);
-prettyPrint(treeTwo.tree);
-treeTwo.deleteItem(4);
-prettyPrint(treeTwo.tree);
-treeTwo.deleteItem(7);
-treeTwo.deleteItem(7);
-treeTwo.deleteItem(6);
-prettyPrint(treeTwo.tree);
+console.log(treeTwo.levelOrder(treeTwo.tree));
