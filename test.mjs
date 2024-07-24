@@ -19,8 +19,12 @@ function prettyPrint(node, prefix = "", isLeft = true) {
 
 const testArray = [1, 2, 3, 4, 6, 8, 9];
 const treeTwo = new Tree(testArray);
-treeTwo.insert(7);
 prettyPrint(treeTwo.tree);
-console.log(treeTwo.find(4));
-console.log(treeTwo.find(9));
-console.log(treeTwo.find(16));
+treeTwo.deleteItem(1);
+prettyPrint(treeTwo.tree);
+treeTwo.deleteItem(4);
+prettyPrint(treeTwo.tree);
+treeTwo.deleteItem(7);
+treeTwo.deleteItem(7);
+treeTwo.deleteItem(6);
+prettyPrint(treeTwo.tree);

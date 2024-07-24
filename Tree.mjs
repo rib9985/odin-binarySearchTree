@@ -68,4 +68,54 @@ export default class Tree {
     }
     return null;
   }
+
+  deleteNode(root, value) {
+    if (root == null) {
+      return root;
+    }
+
+    if (value < root.value) {
+      root.left = this.deleteNode(root.left, value);
+    } else if (value > root.value) {
+      root.right = this.deleteNode(root.right, value);
+    } else {
+      if (root.left === null) {
+        return root.right;
+      } else if (root.right === null) {
+        return root.left;
+      }
+      root.value = this.minValue(root.right);
+      root.right = this.deleteNode(root.right, root.value);
+    }
+    return root;
+  }
+
+  minValue(node) {
+    let minValue = node.value;
+    while (node.left !== null) {
+      minValue = node.left.value;
+      node = node.left;
+    }
+    return minValue;
+  }
+
+  maxValue(node) {
+    let maxValue = node.value;
+    while (node.right !== null) {
+      maxValue = node.right.value;
+      node = node.right;
+    }
+    return minValue;
+  }
+
+  deleteItem(value) {
+    const nodeFound = this.find(value);
+
+    if (nodeFound) {
+      const newTree = this.deleteNode(this.tree, value);
+      this.tree = newTree;
+    } else {
+      return null;
+    }
+  }
 }
