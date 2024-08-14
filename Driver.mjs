@@ -1,5 +1,5 @@
 import Tree from "./Tree.mjs";
-import { prettyPrint } from "./test.mjs";
+import { prettyPrint } from "./PrettyPrint.mjs";
 function createRandomArray(arraySize, maxNumber, minNumber) {
   if (minNumber == null) {
     minNumber = 0;
