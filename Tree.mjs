@@ -184,4 +184,71 @@ export default class Tree {
     preOrderRecursive(root);
     return array;
   }
+
+  maxDepth(node) {
+    if (node == null) {
+      return 0;
+    } else {
+      let leftDepth = this.maxDepth(node.left);
+      let rightDepth = this.maxDepth(node.right);
+
+      return Math.max(leftDepth, rightDepth) + 1;
+    }
+  }
+
+  height(node) {
+    return this.maxDepth(node);
+  }
+
+  depth(node) {
+    function findDepth(root, node) {
+      if (root == null) {
+        return -1;
+      }
+      let distance = -1;
+      if (
+        root.value == node ||
+        (distance = findDepth(root.left, node)) >= 0 ||
+        (distance = findDepth(root.right, node)) >= 0
+      ) {
+        return distance + 1;
+      }
+
+      return distance;
+    }
+
+    return findDepth(this.tree, node);
+  }
+
+  isBalanced(node = this.tree) {
+    function checkBalance(node) {
+      if (node == null) {
+        return 0;
+      }
+
+      let leftDepth = checkBalance(node.left);
+      let rightDepth = checkBalance(node.right);
+
+      if (
+        leftDepth == -1 ||
+        rightDepth == -1 ||
+        Math.abs(leftDepth - rightDepth) > 1
+      ) {
+        return -1;
+      }
+
+      return Math.max(leftDepth, rightDepth) + 1;
+    }
+
+    return checkBalance(node) != -1;
+  }
+
+  rebalance() {
+    if (this.isBalanced()) {
+      return;
+    } else {
+      const sortedNodes = this.inOrder(this.tree);
+      return (this.tree = this.buildTree(sortedNodes));
+    }
+  }
 }
