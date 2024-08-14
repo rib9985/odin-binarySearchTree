@@ -1,7 +1,7 @@
 # Binary Search Tree
 ## A Balanced BST implementation in JS, using ES6 modules
 ### Methods
-- `buildTree(array)` -> Takes an unsorted/duplicated array, sorts it, removes duplicates and builds a balanced BST
+`buildTree(array)` -> Takes an unsorted/duplicated array, sorts it, removes duplicates and builds a balanced BST
 
  `insert(value)` -> Inserts a value into the BST
 
@@ -33,7 +33,7 @@
 ### Usage
 - To use, copy all the dependencies, excluding `Driver.mjs`
 - For use in a JS file:
-```
+```js
 import { Tree.mjs } from "./Tree.mjs"
 const tree = new Tree (yourArrayHere)
 ```
