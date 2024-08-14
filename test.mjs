@@ -1,6 +1,6 @@
 import Tree from "./Tree.mjs";
 
-function prettyPrint(node, prefix = "", isLeft = true) {
+export function prettyPrint(node, prefix = "", isLeft = true) {
   if (node === null) {
     return;
   }
@@ -20,7 +20,18 @@ function prettyPrint(node, prefix = "", isLeft = true) {
 const testArray = [1, 2, 3, 4, 6, 8, 9];
 const treeTwo = new Tree(testArray);
 prettyPrint(treeTwo.tree);
-console.log(treeTwo.levelOrder(treeTwo.tree));
-console.log(treeTwo.inOrder(treeTwo.tree));
-console.log(treeTwo.preOrder(treeTwo.tree));
-console.log(treeTwo.postOrder(treeTwo.tree));
+console.log(`The height is ${treeTwo.height(treeTwo.tree)}`);
+console.log(treeTwo.depth(2)); // expect 1 ;
+console.log(treeTwo.depth(4)); // expect 0 ;
+console.log(treeTwo.depth(9)); // expect 2 ;
+console.log(treeTwo.isBalanced()); // expect true
+
+treeTwo.insert(10);
+treeTwo.insert(11);
+treeTwo.insert(15);
+treeTwo.insert(7);
+treeTwo.insert(5);
+console.log(treeTwo.isBalanced()); // expect false
+prettyPrint(treeTwo.tree);
+treeTwo.rebalance(); // expect false
+prettyPrint(treeTwo.tree);
